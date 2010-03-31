@@ -41,7 +41,7 @@ module EM
     module Analogger
       extend EM::SpecHelper
 
-      @@logfile = Tempfile.new('analogger.')
+      @@logfile = Tempfile.new('analogger.').path
       @@tmpio = nil
       @@log = nil
 
