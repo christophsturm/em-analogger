@@ -1,7 +1,10 @@
-require File.dirname(__FILE__) + '/../lib/em-analogger'
+$LOAD_PATH << File.expand_path('../lib', __FILE__)
+
+require 'em-analogger'
 require "tempfile"
 require "swiftcore/Analogger"
 require "em-spec/rspec"
+
 
 class LogFile < EM::Connection
   include EM::Deferrable
@@ -36,7 +39,7 @@ end
 module EM
   module Spec
     module Analogger
-      extend EM::SpecHelper 
+      extend EM::SpecHelper
 
       @@logfile = Tempfile.new('analogger.')
       @@tmpio = nil
@@ -55,7 +58,7 @@ module EM
         config[Swiftcore::Analogger::Cport] = 6766
         config[Swiftcore::Analogger::Cdefault_log] = @@logfile
         config[Swiftcore::Analogger::Csyncinterval] = 1
-        config[Swiftcore::Analogger::Cinterval] = 1 
+        config[Swiftcore::Analogger::Cinterval] = 1
         config
       end
 
